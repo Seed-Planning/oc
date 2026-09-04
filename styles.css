@@ -444,31 +444,36 @@ button { color: inherit; }
 
 /* Home hints CTA */
 .home-hints {
-  padding: clamp(72px, 8vw, 110px) 0;
+  padding: clamp(40px, 5vw, 72px) 0;
   background: url("gradient-background.png") center / cover no-repeat;
 }
 .home-hints__grid {
   display: grid;
   grid-template-columns: 1.15fr .85fr;
   align-items: center;
-  gap: clamp(40px, 7vw, 100px);
+  gap: clamp(24px, 4vw, 64px);
 }
 .home-hints__copy h2 {
   margin: 0;
-  font-size: clamp(30px, 4vw, 48px);
+  font-size: clamp(24px, 2.8vw, 36px);
   font-weight: 400;
-  line-height: 1.45;
-  letter-spacing: .09em;
+  line-height: 1.35;
+  letter-spacing: -0.12em;
 }
 .home-hints__copy h2 strong { font-weight: 700; }
-.home-hints__copy .pill-button { margin-top: 34px; }
+.home-hints__copy .pill-button { margin-top: 22px; }
 .hints-orbits {
+  --orb-size: clamp(180px, 18vw, 240px);
+  --orb-gap: clamp(8px, 1vw, 16px);
+  --triangle-height: calc((var(--orb-size) + var(--orb-gap)) * 0.8660254);
   position: relative;
-  min-height: 360px;
+  width: calc(var(--orb-size) * 2 + var(--orb-gap));
+  height: calc(var(--orb-size) + var(--triangle-height));
+  margin-inline: auto;
 }
 .hint-orb {
   position: absolute;
-  width: clamp(180px, 18vw, 240px);
+  width: var(--orb-size);
   aspect-ratio: 1;
   display: grid;
   place-items: center;
@@ -482,7 +487,7 @@ button { color: inherit; }
 .hint-orb span { display: block; margin-top: 10px; font-size: 15px; line-height: 1.55; }
 .hint-orb--one { left: 0; top: 0; }
 .hint-orb--two { right: 0; top: 0; }
-.hint-orb--three { left: 50%; bottom: 0; transform: translateX(-50%); }
+.hint-orb--three { left: 50%; top: var(--triangle-height); transform: translateX(-50%); }
 
 /* Footer */
 .site-footer {
@@ -932,7 +937,10 @@ button { color: inherit; }
   .patient-card { min-height: 500px; }
   .home-hints__grid { grid-template-columns: 1fr; }
   .home-hints__copy { text-align: center; }
-  .hints-orbits { width: min(620px, 100%); margin-inline: auto; }
+  .hints-orbits {
+    --orb-size: clamp(170px, 26vw, 220px);
+    --orb-gap: clamp(10px, 2vw, 18px);
+  }
   .voice-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .insight-section { grid-template-columns: 1fr; min-height: 0; }
   .insight-rail {
@@ -972,11 +980,10 @@ button { color: inherit; }
   .topic-panels { margin-top: 54px; }
   .topic-panel__top { align-items: flex-start; flex-direction: column; }
   .topic-panel .pill-button { align-self: stretch; }
-  .hints-orbits { min-height: 580px; }
-  .hint-orb { width: 190px; }
-  .hint-orb--one { left: 0; top: 0; }
-  .hint-orb--two { right: 0; top: 180px; }
-  .hint-orb--three { left: 0; bottom: 0; transform: none; }
+  .hints-orbits {
+    --orb-size: 190px;
+    --orb-gap: 10px;
+  }
   .site-footer__inner { grid-template-columns: 1fr; align-items: start; gap: 34px; }
   .footer-nav { grid-template-columns: 1fr; gap: 12px; }
   .voice-grid { grid-template-columns: 1fr; gap: 42px; }
@@ -1006,12 +1013,14 @@ button { color: inherit; }
   .patient-card__description { font-size: 14px; }
   .carousel-controls { gap: 12px; }
   .carousel-dot { width: 32px; }
-  .hints-orbits { min-height: 640px; }
-  .hint-orb { width: 175px; padding: 18px; }
+  .hints-orbits {
+    --orb-size: 175px;
+    --orb-gap: 8px;
+  }
+  .hint-orb { padding: 18px; }
   .hint-orb strong { font-size: 23px; }
   .hint-orb span { font-size: 13px; }
-  .hint-orb--two { top: 220px; }
-  .home-hints__copy h2 { font-size: 30px; }
+  .home-hints__copy h2 { font-size: 30px; letter-spacing: -0.13em; }
   .voice-header h1 { font-size: 29px; letter-spacing: .10em; }
   .voice-card { padding-inline: 26px; }
   .insight-content h2 { letter-spacing: .08em; }

@@ -721,6 +721,20 @@ button { color: inherit; }
   opacity: .55;
   pointer-events: none;
 }
+.detail-page .insight-main::before {
+  inset: auto;
+  top: -36%;
+  left: 4%;
+  z-index: 0;
+  width: min(154%, 1720px);
+  height: 206%;
+  background-image: url("diagnosis-ribbon-updated.png");
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: contain;
+  opacity: .58;
+  visibility: visible;
+}
 .insight-content {
   position: relative;
   z-index: 1;
@@ -886,7 +900,15 @@ button { color: inherit; }
   border-style: solid;
   border-color: rgba(255,255,255,.92) transparent transparent transparent;
 }
-.message-item:last-child { grid-column: 2; }
+.message-item:last-child {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: calc((100% - 50px) / 2);
+}
+.message-item:last-child .speech-bubble {
+  max-width: 100%;
+  margin-inline: auto;
+}
 .closing-banner {
   position: relative;
   overflow: hidden;
@@ -899,23 +921,25 @@ button { color: inherit; }
 .closing-banner::before {
   content: "";
   position: absolute;
-  left: 2%;
-  bottom: -34%;
+  left: 1%;
+  bottom: -14%;
   width: min(35vw, 420px);
   aspect-ratio: 1;
-  background: url("teal-ribbon.png") center / contain no-repeat;
+  background: url("teal-ribbon-updated.png") left bottom / contain no-repeat;
   opacity: .72;
 }
 .closing-banner__text {
   position: relative;
   z-index: 1;
-  max-width: 720px;
+  max-width: 940px;
   margin-left: auto;
-  padding: 70px var(--side-pad) 70px 30px;
+  margin-right: clamp(8px, 1.5vw, 18px);
+  padding: 70px clamp(24px, 3.5vw, 42px) 70px 56px;
   font-size: 16px;
   font-weight: 600;
   line-height: 2.1;
   letter-spacing: .06em;
+  text-align: left;
 }
 
 /* About page */
@@ -1083,7 +1107,7 @@ button { color: inherit; }
   .message-grid { grid-template-columns: 1fr; }
   .message-item:last-child { grid-column: auto; }
   .closing-banner { min-height: 470px; }
-  .closing-banner::before { width: 250px; left: -30px; bottom: -40px; }
+  .closing-banner::before { width: 250px; left: -18px; bottom: 18px; }
   .closing-banner__text { padding: 54px 26px 220px; }
 }
 

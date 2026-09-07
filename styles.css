@@ -607,10 +607,10 @@ button { color: inherit; }
 .voice-card.is-expanded { min-height: 0; }
 .voice-card__clip {
   position: absolute;
-  top: -30px;
-  right: 18px;
-  width: 44px;
-  height: 105px;
+  top: -18px;
+  right: 22px;
+  width: 28px;
+  height: 68px;
   background: var(--patient-color);
   -webkit-mask: url("clip.png") center / contain no-repeat;
   mask: url("clip.png") center / contain no-repeat;

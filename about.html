@@ -24,7 +24,18 @@
             <span class="nav-toggle__lines" aria-hidden="true"></span>
           </button>
           <nav class="site-nav" id="site-nav" aria-label="メインナビゲーション" data-site-nav>
-            <a href="index.html">HOME</a><a href="diagnosis.html">患者さんの体験談</a><a href="hints.html">治療に向き合うヒント</a><a href="about.html" aria-current="page">このサイトについて</a>
+            <div class="site-nav__item"><a class="site-nav__link" href="index.html">HOME</a></div>
+            <div class="site-nav__item site-nav__item--has-subnav"><a class="site-nav__link" href="diagnosis.html">患者さんの体験談</a>
+              <div class="site-subnav" aria-label="患者さんの体験テーマ">
+              <a class="site-subnav__link" href="diagnosis.html">診断までの道のり</a>
+              <a class="site-subnav__link" href="treatment.html">告知後の治療選択</a>
+              <a class="site-subnav__link" href="impact.html">治療が生活に及ぼす影響</a>
+              <a class="site-subnav__link" href="information.html">患者さんが求めていた情報</a>
+              <a class="site-subnav__link" href="recurrence.html">再発への不安と心の支え</a>
+              </div>
+            </div>
+            <div class="site-nav__item"><a class="site-nav__link" href="hints.html">治療に向き合うヒント</a></div>
+            <div class="site-nav__item"><a class="site-nav__link" href="about.html" aria-current="page">このサイトについて</a></div>
           </nav>
         </div>
       </header>

@@ -929,7 +929,7 @@ button { color: inherit; }
 .messages-inner { position: relative; z-index: 1; }
 .messages-title {
   margin: 0 0 50px;
-  color: #fff;
+  color: #7d5d02;
   font-size: clamp(34px, 4.6vw, 54px);
   line-height: 1.45;
   letter-spacing: .13em;
@@ -955,6 +955,9 @@ button { color: inherit; }
   font-weight: 600;
   text-align: center;
   line-height: 1.75;
+}
+.speech-bubble--tight {
+  letter-spacing: -0.04em;
 }
 .speech-bubble::after {
   content: "";

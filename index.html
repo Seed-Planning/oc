@@ -24,7 +24,12 @@
             <span class="nav-toggle__lines" aria-hidden="true"></span>
           </button>
           <nav class="site-nav" id="site-nav" aria-label="メインナビゲーション" data-site-nav>
-            <div class="site-nav__item"><a class="site-nav__link" href="index.html" aria-current="page">HOME</a></div>
+            <div class="site-nav__item site-nav__item--has-subnav"><a class="site-nav__link" href="index.html" aria-current="page">HOME</a>
+              <div class="site-subnav" aria-label="HOMEの関連項目">
+              <a class="site-subnav__link" href="index.html#patients-heading">患者さんについて</a>
+              <a class="site-subnav__link" href="index.html#experience-heading">患者さんの体験談</a>
+              </div>
+            </div>
             <div class="site-nav__item site-nav__item--has-subnav"><a class="site-nav__link" href="diagnosis.html">患者さんの体験談</a>
               <div class="site-subnav" aria-label="患者さんの体験テーマ">
               <a class="site-subnav__link" href="diagnosis.html">診断までの道のり</a>
@@ -60,8 +65,7 @@
       <section class="patient-section" aria-labelledby="patients-heading">
         <div class="site-wrap">
           <div class="patient-section__heading">
-            <p class="eyebrow">PATIENT VOICES</p>
-            <h2 class="section-heading" id="patients-heading">患者さんについて</h2>
+                        <h2 class="section-heading" id="patients-heading">患者さんについて</h2>
           </div>
           <div class="patient-carousel" data-carousel>
             <div class="carousel-viewport" tabindex="0" data-carousel-viewport>

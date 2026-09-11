@@ -168,6 +168,9 @@ button { color: inherit; }
   color: var(--brown-dark);
   font-weight: 700;
 }
+.site-subnav-toggle {
+  display: none;
+}
 .nav-toggle {
   display: none;
   width: 46px;
@@ -894,6 +897,14 @@ button { color: inherit; }
   line-height: 1.35;
   letter-spacing: .04em;
 }
+.hint-card__desktop-break {
+  display: inline;
+}
+@media (min-width: 701px) {
+  .hint-card__desktop-break {
+    display: block;
+  }
+}
 .hint-card p {
   grid-column: 1 / -1;
   margin: 0;
@@ -1147,10 +1158,64 @@ button { color: inherit; }
   }
   .message-item:nth-child(2n) { margin-top: 0; }
   .message-item:last-child { grid-column: auto; }
+  .hints-title {
+    margin: 0 0 40px;
+    font-size: 28px;
+    line-height: 1.4;
+    letter-spacing: .08em;
+  }
+  .hints-title__hint {
+    display: block;
+  }
 }
 
 @media (max-width: 700px) {
   body { letter-spacing: .02em; }
+  .site-nav {
+    padding: 18px 24px 28px;
+  }
+  .site-nav__item--has-subnav {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+  .site-nav__item--has-subnav > .site-nav__link {
+    grid-column: 1;
+    justify-content: center;
+    width: 100%;
+  }
+  .site-subnav-toggle {
+    width: 38px;
+    height: 38px;
+    display: inline-grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--brown);
+    cursor: pointer;
+  }
+  .site-subnav-toggle::before {
+    content: "▼";
+    font-size: 12px;
+    line-height: 1;
+    transition: transform .2s ease;
+  }
+  .site-nav__item--has-subnav.is-expanded .site-subnav-toggle::before {
+    transform: rotate(180deg);
+  }
+  .site-nav__item--has-subnav .site-subnav {
+    grid-column: 1 / -1;
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height .28s ease, opacity .2s ease, padding .2s ease;
+  }
+  .site-nav__item--has-subnav.is-expanded .site-subnav {
+    max-height: 320px;
+    padding: 2px 0 8px;
+    opacity: 1;
+  }
   .hero-label {
     display: block;
     font-size: 10px;
@@ -1199,17 +1264,33 @@ button { color: inherit; }
   .topic-tabs { gap: 8px 18px; }
   .topic-tab { font-size: 13px; letter-spacing: .02em; }
   .topic-panels { margin-top: 40px; }
-  .topic-panel__top { align-items: flex-start; flex-direction: column; }
-  .topic-panel h3 { font-size: 20px; line-height: 1.34; letter-spacing: .04em; }
-  .topic-panel p { font-size: 14px; }
+  .topic-panel {
+    display: flex;
+    flex-direction: column;
+  }
+  .topic-panel__top {
+    display: contents;
+  }
+  .topic-panel h3 {
+    order: 1;
+    font-size: 20px;
+    line-height: 1.34;
+    letter-spacing: .04em;
+  }
+  .topic-panel p {
+    order: 2;
+    font-size: 14px;
+  }
   .topic-panel .pill-button {
+    order: 3;
     align-self: stretch;
     min-height: 48px;
+    margin-top: 18px;
     padding: 10px 24px;
     font-size: 14px;
   }
   .home-hints__copy h2 {
-    font-size: 22px;
+    font-size: 19px;
     line-height: 1.26;
     letter-spacing: -0.11em;
   }
@@ -1231,6 +1312,27 @@ button { color: inherit; }
     line-height: 1.9;
   }
   .voice-intro br { display: none; }
+  .detail-page--impact .voice-header h1,
+  .detail-page--recurrence .voice-header h1 {
+    font-size: 0;
+    line-height: 1.34;
+    letter-spacing: 0;
+  }
+  .detail-page--impact .voice-header h1::before,
+  .detail-page--recurrence .voice-header h1::before {
+    display: block;
+    font-size: 29px;
+    font-weight: 700;
+    line-height: 1.34;
+    letter-spacing: .08em;
+    white-space: pre-line;
+  }
+  .detail-page--impact .voice-header h1::before {
+    content: "治療が生活に及ぼす\A影響";
+  }
+  .detail-page--recurrence .voice-header h1::before {
+    content: "再発への不安と\A心の支え";
+  }
   .voice-grid {
     grid-template-columns: none;
     grid-auto-flow: column;
@@ -1442,29 +1544,35 @@ button { color: inherit; }
   .home-hints__copy h2 {
     grid-area: title;
     text-align: center;
-    font-size: 22px;
+    font-size: 19px;
     line-height: 1.26;
     letter-spacing: -0.09em;
+  }
+  .home-page #home-hints-heading,
+  .home-page .home-hints__copy h2 {
+    font-size: 18px !important;
+    line-height: 1.3 !important;
+    letter-spacing: -0.06em !important;
   }
   .home-hints__copy .pill-button {
     grid-area: button;
   }
   .hints-orbits {
     grid-area: orbits;
-    --orb-size: 144px;
+    --orb-size: 128px;
     --orb-gap: 4px;
   }
   .hint-orb {
-    padding: 14px;
+    padding: 11px;
   }
   .hint-orb strong {
-    font-size: 19px;
+    font-size: 17px;
     letter-spacing: .04em;
   }
   .hint-orb span {
-    margin-top: 6px;
-    font-size: 11px;
-    line-height: 1.38;
+    margin-top: 5px;
+    font-size: 10px;
+    line-height: 1.34;
   }
 }
 

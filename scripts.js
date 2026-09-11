@@ -7,24 +7,89 @@
   // Mobile navigation
   const navToggle = document.querySelector('[data-nav-toggle]');
   const nav = document.querySelector('[data-site-nav]');
+  const navSubnavItems = nav ? Array.from(nav.querySelectorAll('.site-nav__item--has-subnav')) : [];
+
+  const collapseSubmenus = () => {
+    navSubnavItems.forEach((item) => {
+      item.classList.remove('is-expanded');
+      const button = item.querySelector('.site-subnav-toggle');
+      const subnav = item.querySelector('.site-subnav');
+      button?.setAttribute('aria-expanded', 'false');
+      if (subnav && window.innerWidth <= 700) subnav.hidden = true;
+    });
+  };
+
+  const setupSubnavToggles = () => {
+    navSubnavItems.forEach((item, index) => {
+      const link = item.querySelector('.site-nav__link');
+      const subnav = item.querySelector('.site-subnav');
+      if (!link || !subnav) return;
+
+      if (!subnav.id) subnav.id = `site-subnav-${index + 1}`;
+
+      let button = item.querySelector('.site-subnav-toggle');
+      if (!button) {
+        button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'site-subnav-toggle';
+        button.setAttribute('aria-label', `${link.textContent.trim()} のページ一覧を開閉`);
+        button.setAttribute('aria-controls', subnav.id);
+        link.insertAdjacentElement('afterend', button);
+      }
+
+      if (!button.dataset.bound) {
+        button.dataset.bound = 'true';
+        button.addEventListener('click', (event) => {
+          if (window.innerWidth > 700) return;
+          event.preventDefault();
+          const expanded = button.getAttribute('aria-expanded') === 'true';
+          navSubnavItems.forEach((otherItem) => {
+            if (otherItem === item) return;
+            otherItem.classList.remove('is-expanded');
+            otherItem.querySelector('.site-subnav-toggle')?.setAttribute('aria-expanded', 'false');
+            const otherSubnav = otherItem.querySelector('.site-subnav');
+            if (otherSubnav) otherSubnav.hidden = true;
+          });
+          item.classList.toggle('is-expanded', !expanded);
+          button.setAttribute('aria-expanded', String(!expanded));
+          subnav.hidden = expanded;
+        });
+      }
+
+      if (window.innerWidth <= 700) {
+        const expanded = item.classList.contains('is-expanded');
+        button.setAttribute('aria-expanded', String(expanded));
+        subnav.hidden = !expanded;
+      } else {
+        item.classList.remove('is-expanded');
+        button.setAttribute('aria-expanded', 'false');
+        subnav.hidden = false;
+      }
+    });
+  };
 
   const closeMenu = () => {
     if (!navToggle || !nav) return;
     navToggle.setAttribute('aria-expanded', 'false');
     nav.classList.remove('is-open');
     document.body.classList.remove('menu-open');
+    collapseSubmenus();
   };
 
   if (navToggle && nav) {
+    setupSubnavToggles();
+
     navToggle.addEventListener('click', () => {
       const open = navToggle.getAttribute('aria-expanded') !== 'true';
       navToggle.setAttribute('aria-expanded', String(open));
       nav.classList.toggle('is-open', open);
       document.body.classList.toggle('menu-open', open);
+      if (open && window.innerWidth <= 700) collapseSubmenus();
     });
 
     nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
     window.addEventListener('resize', () => {
+      setupSubnavToggles();
       if (window.innerWidth > 980) closeMenu();
     });
     document.addEventListener('keydown', (event) => {

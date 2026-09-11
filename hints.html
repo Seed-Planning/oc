@@ -24,7 +24,12 @@
             <span class="nav-toggle__lines" aria-hidden="true"></span>
           </button>
           <nav class="site-nav" id="site-nav" aria-label="メインナビゲーション" data-site-nav>
-            <div class="site-nav__item"><a class="site-nav__link" href="index.html">HOME</a></div>
+            <div class="site-nav__item site-nav__item--has-subnav"><a class="site-nav__link" href="index.html">HOME</a>
+              <div class="site-subnav" aria-label="HOMEの関連項目">
+              <a class="site-subnav__link" href="index.html#patients-heading">患者さんについて</a>
+              <a class="site-subnav__link" href="index.html#experience-heading">患者さんの体験談</a>
+              </div>
+            </div>
             <div class="site-nav__item site-nav__item--has-subnav"><a class="site-nav__link" href="diagnosis.html">患者さんの体験談</a>
               <div class="site-subnav" aria-label="患者さんの体験テーマ">
               <a class="site-subnav__link" href="diagnosis.html">診断までの道のり</a>
@@ -47,7 +52,7 @@
           <main id="main-content">
       <section class="hints-hero" aria-labelledby="hints-title">
         <div class="site-wrap hints-hero__inner">
-          <h1 class="hints-title" id="hints-title">患者さんの声から<br>見えてきた、<br>治療に向き合うためのヒント</h1>
+          <h1 class="hints-title" id="hints-title">患者さんの声から<br>見えてきた、<br>治療に向き合うための<span class="hints-title__hint">ヒント</span></h1>
           <div class="hints-list">
             <article class="hint-card" tabindex="0">
   <div class="hint-card__head">
@@ -76,7 +81,7 @@
 </article><article class="hint-card" tabindex="0">
   <div class="hint-card__head">
     <span class="hint-card__number">5.</span>
-    <h2>仕事や家事のことは、<br>周囲の支えや<br>利用できる制度も含めて考える</h2>
+    <h2>仕事や家事のことは、<br>周囲の支えや<br>利用できる制度も<span class="hint-card__desktop-break">含めて考える</span></h2>
   </div>
   <p>治療中の仕事については、フルタイムで働き続けた方、時短勤務に移行した方、退職や休職を余儀なくされた方などさまざまでした。家族が家事や入院費を支えたこと、高額療養費制度や民間の医療保険が経済的な安心につながったことも語られました。治療中の生活を支えるうえで、家族や職場の理解、経済的な備えや制度の利用も重要な支えになります。</p>
 </article><article class="hint-card" tabindex="0">

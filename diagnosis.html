@@ -24,7 +24,12 @@
             <span class="nav-toggle__lines" aria-hidden="true"></span>
           </button>
           <nav class="site-nav" id="site-nav" aria-label="メインナビゲーション" data-site-nav>
-            <div class="site-nav__item"><a class="site-nav__link" href="index.html">HOME</a></div>
+            <div class="site-nav__item site-nav__item--has-subnav"><a class="site-nav__link" href="index.html">HOME</a>
+              <div class="site-subnav" aria-label="HOMEの関連項目">
+              <a class="site-subnav__link" href="index.html#patients-heading">患者さんについて</a>
+              <a class="site-subnav__link" href="index.html#experience-heading">患者さんの体験談</a>
+              </div>
+            </div>
             <div class="site-nav__item site-nav__item--has-subnav"><a class="site-nav__link is-current" href="diagnosis.html">患者さんの体験談</a>
               <div class="site-subnav" aria-label="患者さんの体験テーマ">
               <a class="site-subnav__link" href="diagnosis.html" aria-current="page">診断までの道のり</a>
